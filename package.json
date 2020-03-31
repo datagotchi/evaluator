@@ -1,11 +1,12 @@
 {
-  "name": "evaluator",
+  "name": "@datagotchi/evaluator",
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "start": "node app.js"
   },
   "dependencies": {
+    "@datagotchi/annotator": "^1.0.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",

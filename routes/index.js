@@ -8,7 +8,7 @@ const hummus = require('hummus'),
     log: './public/hummus-log.txt'
   }),
   pageModifier = new hummus.PDFPageModifier(pdfWriter, 0, true),
-  Annotator = require('../../annotator/annotator.js'),
+  Annotator = require('@datagotchi/annotator'),
   annotator = new Annotator(pdfWriter, pageModifier);
 
 /*
