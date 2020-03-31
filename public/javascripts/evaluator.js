@@ -1,3 +1,6 @@
+// DEBUG: modifiers from drag-drop to the PDF's coordinates
+const MOD_X = -200,
+  MOD_Y = 380;
 
 async function loadPDF(path) {
   const pdf = await pdfjsLib.getDocument(path).promise;
@@ -17,13 +20,9 @@ async function loadPDF(path) {
   page.render(renderContext);
 }
 
-async function drawAnnotation(clickEvent) {
-  const MOD_X = -100,
-    MOD_Y = 380;
-  const newPath = await $.post('/resume/annotations', {
-    x: clickEvent.clientX + MOD_X,
-    y: clickEvent.clientY + MOD_Y
-  });
+async function drawAnnotation(skillObject) {
+
+  const newPath = await $.post('/resume/annotations', skillObject);
   $('#loading').toggleClass('show');
   await loadPDF(newPath);
   $('#loading').toggleClass('show');
@@ -44,11 +43,16 @@ function drag_start(event) {
 
 function dragover_handler(event) {
  event.preventDefault();
- event.dataTransfer.dropEffect = "move";
+ event.dataTransfer.dropEffect = "copy";
 }
 
 function drop_handler(event) {
   event.preventDefault();
-  const skill = event.dataTransfer.getData("text/plain");
-  console.log("got skill: ", skill);
+  const text = event.dataTransfer.getData("text/plain");
+  const skillObject = {
+    text: text,
+    x: event.clientX + MOD_X,
+    y: event.clientY + MOD_Y
+  };
+  return drawAnnotation(skillObject);
 }

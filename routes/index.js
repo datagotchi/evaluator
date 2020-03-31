@@ -41,11 +41,14 @@ router.get('/jobs/:id', (req, res, next) => {
 // DEBUG: add annotation
 router.post('/resume/annotations', (req, res, next) => {
   const x = req.body.x,
-    y = req.body.y;
-  annotator.drawRectangle(x, y, 50, 50);
-  pageModifier.endContext().writePage();
-  pdfWriter.end();
-  res.json('./resume-modified.pdf');
+    y = req.body.y,
+    text = req.body.text;
+  annotator.init().then(() => {
+    annotator.addSkillText(x, y, text, 50);
+    pageModifier.endContext().writePage();
+    pdfWriter.end();
+    res.json('./resume-modified.pdf');
+  });
 });
 
 module.exports = router;
