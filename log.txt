@@ -1,0 +1,4 @@
+[ 26/03/2020 20:09:53 ] InputFile::OpenFile, Unexpected Failure. Cannot open file for reading - ./resume.pdf
+[ 26/03/2020 20:10:55 ] InputFile::OpenFile, Unexpected Failure. Cannot open file for reading - ./resume.pdf
+[ 26/03/2020 20:11:45 ] OutputFile::OpenFile, Unexpected Failure. Cannot open file for writing - ../public/resume-modified.pdf
+[ 26/03/2020 21:07:05 ] InputFile::OpenFile, Unexpected Failure. Cannot open file for reading - resume.pdf

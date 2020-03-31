@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.4.456/pdf.js"
+      integrity="sha256-NWP9mKA5l+ktFq3icYKWJYX6D/I3mRe7qjfu86y/vqQ="
+      crossorigin="anonymous"></script>
+    <script src="javascripts/evaluator.js"></script>
+    <script>
+      loadPDF('./resume.pdf');
+    </script>
+    <style type="text/css">
+      #loading {
+        visibility: hidden;
+        background-image: url(../images/loading.gif);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+      #loading.show {
+        visibility: visible;
+      }
+      #pdf {
+        position: absolute;
+        z-index: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loading"></div>
+    <canvas id="pdf" onclick="drawAnnotation(event)"></canvas>
+  </body>
+</html>
