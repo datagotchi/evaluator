@@ -34,12 +34,10 @@ router.get('/jobs', (req, res, next) => {
 router.post('/resume/annotations', (req, res, next) => {
   const x = req.body.x,
     y = req.body.y;
-console.log('calling drawRectangle()');
   annotator.drawRectangle(x, y, 50, 50);
-  console.log('calling writePage()');
   pageModifier.endContext().writePage();
   pdfWriter.end();
-  res.json('./public/resume-modified.pdf');
+  res.json('./resume-modified.pdf');
 });
 
 module.exports = router;

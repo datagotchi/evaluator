@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const http = require('http');
 
 var indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/users');
@@ -16,7 +17,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-// app.use('/users', usersRouter);
+
+const server = http.createServer(app);
+server.listen(process.env.PORT || 3001);
+server.on('listening', () => {
+	console.log('Listening on ', server.address());
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

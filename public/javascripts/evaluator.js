@@ -1,11 +1,6 @@
 
 async function loadPDF(path) {
-  let pdf;
-  await pdfjsLib.getDocument(path).promise.then((thePDF) => {
-    pdf = thePDF;
-  }).catch((err) => {
-    console.error('err: ', err);
-  });
+  const pdf = await pdfjsLib.getDocument(path).promise;
   const page = await pdf.getPage(1);
   const scale = 1.5;
   const viewport = page.getViewport({ scale: scale });
@@ -23,9 +18,11 @@ async function loadPDF(path) {
 }
 
 async function drawAnnotation(clickEvent) {
+  const MOD_X = -100,
+    MOD_Y = 380;
   const newPath = await $.post('/resume/annotations', {
-    x: clickEvent.clientX,
-    y: clickEvent.clientY
+    x: clickEvent.clientX + MOD_X,
+    y: clickEvent.clientY + MOD_Y
   });
   $('#loading').toggleClass('show');
   await loadPDF(newPath);
