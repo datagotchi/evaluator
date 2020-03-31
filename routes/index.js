@@ -22,12 +22,20 @@ const jobs = [
   {
     id: 1,
     title: 'Data Scientist',
-    company: 'Test Inc'
+    company: 'Test Inc',
+    skills: [
+      'NLP',
+      'ANNs'
+    ]
   }
 ];
 
 router.get('/jobs', (req, res, next) => {
   res.json(jobs);
+});
+
+router.get('/jobs/:id', (req, res, next) => {
+  res.json(jobs.find((job) => job.id == req.params.id));
 });
 
 // DEBUG: add annotation

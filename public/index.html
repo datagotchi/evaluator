@@ -11,31 +11,17 @@
     <script src="javascripts/evaluator.js"></script>
     <script>
       loadPDF('./resume.pdf');
+      getJob(1);
     </script>
-    <style type="text/css">
-      #loading {
-        visibility: hidden;
-        background-image: url(../images/loading.gif);
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-        position: absolute;
-        z-index: 2;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-      }
-      #loading.show {
-        visibility: visible;
-      }
-      #pdf {
-        position: absolute;
-        z-index: 1;
-      }
-    </style>
+    <link rel="stylesheet" href="stylesheets/style.css" />
   </head>
   <body>
-    <div id="loading"></div>
-    <canvas id="pdf" onclick="drawAnnotation(event)"></canvas>
+    <div id="left">
+      <ul id="skills"></ul>
+    </div>
+    <div id="right">
+      <div id="loading"></div>
+      <canvas id="pdf" ondragover="dragover_handler(event)" ondrop="drop_handler(event)"></canvas>
+    </div>
   </body>
 </html>

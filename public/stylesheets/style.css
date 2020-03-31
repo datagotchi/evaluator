@@ -1,0 +1,32 @@
+#left, #right {
+  float: left;
+}
+
+#loading {
+  visibility: hidden;
+  background-image: url(../images/loading.gif);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+#loading.show {
+  visibility: visible;
+}
+#pdf {
+  position: absolute;
+  z-index: 1;
+}
+
+#skills li {
+  background-color: blue;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px;
+  margin: 5px;
+}
