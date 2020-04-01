@@ -21,7 +21,6 @@ async function loadPDF(path) {
 }
 
 async function drawAnnotation(skillObject) {
-
   const newPath = await $.post('/resume/annotations', skillObject);
   $('#loading').toggleClass('show');
   await loadPDF(newPath);

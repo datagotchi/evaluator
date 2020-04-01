@@ -38,13 +38,12 @@ router.get('/jobs/:id', (req, res, next) => {
   res.json(jobs.find((job) => job.id == req.params.id));
 });
 
-// DEBUG: add annotation
 router.post('/resume/annotations', (req, res, next) => {
   const x = req.body.x,
     y = req.body.y,
     text = req.body.text;
   annotator.init().then(() => {
-    annotator.addSkillText(x, y, text, 50);
+    annotator.addSkillText(x, y, text, 50); // DEBUG -- not working!
     pageModifier.endContext().writePage();
     pdfWriter.end();
     res.json('./resume-modified.pdf');
